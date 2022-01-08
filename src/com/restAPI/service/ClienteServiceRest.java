@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -18,21 +19,6 @@ import com.restAPI.models.Cliente;
 
 @Path(value = "/clientes")
 public class ClienteServiceRest {
-
-	
-	@Path(value = "/allClientes")
-	@GET
-	@Produces(value = MediaType.APPLICATION_JSON)
-	public List<Cliente> getClientes() {
-		List<Cliente> clientes = new ArrayList<>();
-		Cliente c = new Cliente(1L, "Jesus", "Vazquez", 29, "VACJ930901", "Lazaro Cardenas 8", "55667788");
-		Cliente c1 = new Cliente(2L, "Marco", "Polo", 49, "VACJ930901", "Lazaro Cardenas 8", "55667788");
-		Cliente c2 = new Cliente(3L, "Gabriel", "Cardenas", 19, "VACJ930901", "Lazaro Cardenas 8", "55667788");
-		clientes.add(c);
-		clientes.add(c1);
-		clientes.add(c2);
-		return clientes;
-	}
 	
 	@GET
 	@Path(value = "/{id}")
@@ -43,7 +29,6 @@ public class ClienteServiceRest {
 	}
 	
 	@GET
-	@Path(value = "/all")
 	@Produces(value = MediaType.APPLICATION_JSON)
 	public Response getClienteswithResponse() {
 		List<Cliente> clientes = new ArrayList<>();
@@ -62,7 +47,6 @@ public class ClienteServiceRest {
 	}
 	
 	@POST
-	@Path(value = "/create")
 	@Consumes(value = MediaType.APPLICATION_JSON)
 	@Produces(value = MediaType.TEXT_PLAIN)
 	public Response saveCliente(Cliente cliente) {
@@ -79,6 +63,27 @@ public class ClienteServiceRest {
 		return Response.ok(r).status(Status.ACCEPTED).build();
 	}
 	
+	
+	@DELETE
+	@Path(value = "/{id}")
+	public Response deleteClienteById(@PathParam("id") String id) {
+		String r = "El id: "+ id + " se ha eliminado ";
+		return Response.ok(r).status(Status.OK).build();
+	}
+	
+	//@Path(value = "/allClientes")
+//	@GET
+//	@Produces(value = MediaType.APPLICATION_JSON)
+//	public List<Cliente> getClientes() {
+//		List<Cliente> clientes = new ArrayList<>();
+//		Cliente c = new Cliente(1L, "Jesus", "Vazquez", 29, "VACJ930901", "Lazaro Cardenas 8", "55667788");
+//		Cliente c1 = new Cliente(2L, "Marco", "Polo", 49, "VACJ930901", "Lazaro Cardenas 8", "55667788");
+//		Cliente c2 = new Cliente(3L, "Gabriel", "Cardenas", 19, "VACJ930901", "Lazaro Cardenas 8", "55667788");
+//		clientes.add(c);
+//		clientes.add(c1);
+//		clientes.add(c2);
+//		return clientes;
+//	}
 	
 	
 }

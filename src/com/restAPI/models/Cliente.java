@@ -2,7 +2,7 @@ package com.restAPI.models;
 
 public class Cliente {
 	
-	private Long id;
+	private int id;
 	private String nombre;
 	private String apellidos;
 	private int edad;
@@ -10,7 +10,7 @@ public class Cliente {
 	private String direccion;
 	private String telefono;
 	
-	public Cliente(Long id, String nombre, String apellidos, int edad, String rfc, String direccion, String telefono) {
+	public Cliente(int id, String nombre, String apellidos, int edad, String rfc, String direccion, String telefono) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -25,10 +25,10 @@ public class Cliente {
 		
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNombre() {
